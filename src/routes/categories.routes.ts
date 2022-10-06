@@ -8,7 +8,7 @@ categoriesRoutes.post('/categories', (request, response) => {
   const { name, description } = request.body;
 
   categories.push({ name, description });
-  response.status(201);
+  response.sendStatus(201);
 });
 
 export { categoriesRoutes };
