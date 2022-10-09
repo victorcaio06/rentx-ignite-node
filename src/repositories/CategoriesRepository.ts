@@ -17,4 +17,15 @@ export class CategoriesRepository {
 
     this.categories.push(category);
   }
+
+  getAll(): Category[] {
+    return this.categories;
+  }
+
+  findByName(name: string) {
+    const checkCategoryName = this.categories.find(
+      (categories) => categories.name === name
+    );
+    return checkCategoryName;
+  }
 }
