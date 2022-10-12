@@ -1,5 +1,6 @@
 import { Category } from '../models/Category';
 import { CreateUserDTO } from '../dto/create-category-dto';
+import { v4 as uuidv4 } from 'uuid';
 
 export class CategoriesRepository {
   constructor() {
@@ -10,6 +11,7 @@ export class CategoriesRepository {
   create({ name, description }: CreateUserDTO): void {
     const category = new Category();
     Object.assign(category, {
+      id: uuidv4(),
       name,
       description,
       created_at: new Date(),
