@@ -1,5 +1,5 @@
 import { Category } from '../models/Category';
-import { CreateUserDTO } from '../dto/create-category-dto';
+import { CreateCategoryDTO } from '../dto/create-category-dto';
 import { v4 as uuidv4 } from 'uuid';
 
 export class CategoriesRepository {
@@ -8,7 +8,7 @@ export class CategoriesRepository {
   }
   private categories: Category[];
 
-  create({ name, description }: CreateUserDTO): void {
+  create({ name, description }: CreateCategoryDTO): void {
     const category = new Category();
     Object.assign(category, {
       id: uuidv4(),
@@ -20,7 +20,7 @@ export class CategoriesRepository {
     this.categories.push(category);
   }
 
-  getAll(): Category[] {
+  list(): Category[] {
     return this.categories;
   }
 
