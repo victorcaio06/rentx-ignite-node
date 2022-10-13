@@ -1,8 +1,8 @@
-import { Category } from '../models/Category';
 import { CreateCategoryDTO } from '../dto/create-category-dto';
-import { v4 as uuidv4 } from 'uuid';
+import { Category } from '../models/Category';
+import { ICategoriesRepository } from './ICategoriesRepository';
 
-export class CategoriesRepository {
+export class CategoriesRepository implements ICategoriesRepository {
   constructor() {
     this.categories = [];
   }
@@ -11,7 +11,6 @@ export class CategoriesRepository {
   create({ name, description }: CreateCategoryDTO): void {
     const category = new Category();
     Object.assign(category, {
-      id: uuidv4(),
       name,
       description,
       created_at: new Date(),
