@@ -1,10 +1,11 @@
 import { Request, Response } from 'express';
-import { ICategoriesRepository } from '../../repositories/ICategoriesRepository';
+import { ListCategoriesUseCase } from './ListCategoriesUseCase';
 
 export class ListCategoriesController {
-  constructor(private categoriesRepository: ICategoriesRepository) {}
-  handle(request: Request, response: Response) {
-    const getAllCategories = this.categoriesRepository.list();
-    return response.status(200).json(getAllCategories);
+  constructor(private listCategoriesUseCase: ListCategoriesUseCase) {}
+
+  handle(request: Request, response: Response): Response {
+    const listCategories = this.listCategoriesUseCase.execute();
+    return response.status(200).json(listCategories);
   }
 }
