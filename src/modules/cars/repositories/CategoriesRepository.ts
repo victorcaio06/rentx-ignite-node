@@ -3,10 +3,19 @@ import { Category } from '../models/Category';
 import { ICategoriesRepository } from './ICategoriesRepository';
 
 export class CategoriesRepository implements ICategoriesRepository {
-  constructor() {
+  private constructor() {
     this.categories = [];
   }
+
   private categories: Category[];
+  private static INSTANCE: CategoriesRepository;
+
+  public static getInstance(): CategoriesRepository {
+    if (!CategoriesRepository.INSTANCE)
+      CategoriesRepository.INSTANCE = new CategoriesRepository();
+
+    return CategoriesRepository.INSTANCE;
+  }
 
   create({ name, description }: CreateCategoryDTO): void {
     const category = new Category();
