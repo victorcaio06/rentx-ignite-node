@@ -8,6 +8,14 @@ export class SpecificationRepository implements ISpecificationRepository {
   }
 
   private specifications: Specification[];
+  private static INSTANCE: SpecificationRepository;
+
+  public static getInstance(): SpecificationRepository {
+    if (!SpecificationRepository.INSTANCE)
+      SpecificationRepository.INSTANCE = new SpecificationRepository();
+
+    return SpecificationRepository.INSTANCE;
+  }
 
   create({ name, description }: CreateSpecificationDTO): void {
     const specification = new Specification();
