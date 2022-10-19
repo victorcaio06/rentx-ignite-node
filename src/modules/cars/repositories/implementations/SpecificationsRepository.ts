@@ -1,6 +1,6 @@
-import { CreateSpecificationDTO } from '../dto/create-specification-dto';
-import { Specification } from '../models/Specification';
-import { ISpecificationRepository } from './ISpecificationsRepository';
+import { CreateSpecificationDTO } from '../../dto/create-specification-dto';
+import { Specification } from '../../models/Specification';
+import { ISpecificationRepository } from '../ISpecificationsRepository';
 
 export class SpecificationRepository implements ISpecificationRepository {
   constructor() {
