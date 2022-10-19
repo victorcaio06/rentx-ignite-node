@@ -7,6 +7,6 @@ export class ListSpecificationsController {
   handle(request: Request, response: Response) {
     const listSpecifications = this.listSpecificationsUseCase.execute();
 
-    return response.status(200).json({ listSpecifications });
+    return response.status(200).json(listSpecifications);
   }
 }

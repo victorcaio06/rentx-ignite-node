@@ -3,6 +3,6 @@ import { Specification } from '../models/Specification';
 
 export interface ISpecificationRepository {
   create({ name, description }: CreateSpecificationDTO): void;
-  findByName(name: string): Specification;
   list(): Specification[];
+  findByName(name: string): Specification;
 }

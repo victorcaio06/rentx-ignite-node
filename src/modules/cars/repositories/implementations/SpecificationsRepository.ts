@@ -3,7 +3,7 @@ import { Specification } from '../../models/Specification';
 import { ISpecificationRepository } from '../ISpecificationsRepository';
 
 export class SpecificationRepository implements ISpecificationRepository {
-  constructor() {
+  private constructor() {
     this.specifications = [];
   }
 
@@ -11,9 +11,9 @@ export class SpecificationRepository implements ISpecificationRepository {
   private static INSTANCE: SpecificationRepository;
 
   public static getInstance(): SpecificationRepository {
-    if (!SpecificationRepository.INSTANCE)
+    if (!SpecificationRepository.INSTANCE) {
       SpecificationRepository.INSTANCE = new SpecificationRepository();
-
+    }
     return SpecificationRepository.INSTANCE;
   }
 

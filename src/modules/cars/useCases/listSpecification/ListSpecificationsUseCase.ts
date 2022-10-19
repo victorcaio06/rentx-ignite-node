@@ -3,9 +3,9 @@ import { ISpecificationRepository } from '../../repositories/ISpecificationsRepo
 
 export class ListSpecificationsUseCase {
   constructor(private specificationsRepository: ISpecificationRepository) {}
+
   execute(): Specification[] {
     const specifications = this.specificationsRepository.list();
-
     return specifications;
   }
 }

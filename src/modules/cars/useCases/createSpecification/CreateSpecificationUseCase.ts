@@ -10,7 +10,7 @@ export class CreteSpecificationUseCase {
 
   execute({ name, description }: IRequest): void {
     const checkAlreadyExists = this.speficicationRespository.findByName(name);
-    if (!checkAlreadyExists) throw new Error('Specification already exists!');
+    if (checkAlreadyExists) throw new Error('Specification already exists!');
 
     this.speficicationRespository.create({ name, description });
   }
