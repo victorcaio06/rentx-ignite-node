@@ -3,7 +3,7 @@ import { Specification } from '../../models/Specification';
 import { ISpecificationRepository } from '../ISpecificationsRepository';
 
 export class SpecificationRepository implements ISpecificationRepository {
-  private constructor() {
+  constructor() {
     this.specifications = [];
   }
 

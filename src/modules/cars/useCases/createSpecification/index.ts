@@ -2,7 +2,7 @@ import { SpecificationRepository } from '../../repositories/implementations/Spec
 import { CreateSpecificationController } from './CreateSpecificationController';
 import { CreteSpecificationUseCase } from './CreateSpecificationUseCase';
 
-const specificationsRepository = new SpecificationRepository();
+const specificationsRepository = SpecificationRepository.getInstance();
 
 const createSpecificationUseCase = new CreteSpecificationUseCase(
   specificationsRepository
