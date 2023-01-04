@@ -1,5 +1,5 @@
 import { CreateSpecificationDTO } from '../dto/create-specification-dto';
-import { Specification } from '../models/Specification';
+import { Specification } from '../entities/Specification';
 
 export interface ISpecificationRepository {
   create({ name, description }: CreateSpecificationDTO): void;
