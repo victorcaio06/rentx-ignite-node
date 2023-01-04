@@ -1,4 +1,6 @@
 import { DataSource } from 'typeorm';
+import { Category } from '../modules/cars/models/Category';
+import { Specification } from '../modules/cars/models/Specification';
 
 export const AppDataSource = new DataSource({
   type: 'postgres',
@@ -8,5 +10,6 @@ export const AppDataSource = new DataSource({
   password: 'ignite',
   database: 'rentx',
   synchronize: true,
-  migrations: ['src/database/migrations/*.ts'],
+  entities: [Category, Specification],
+  migrations: ['./src/database/migrations/*.{ts,js}'],
 });
