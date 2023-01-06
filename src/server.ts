@@ -13,6 +13,8 @@ AppDataSource.initialize()
     console.error('Error during Data Source initialization:', err);
   });
 
+import './shared/container';
+
 const app = express();
 app.use(express.json());
 
