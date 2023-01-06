@@ -11,15 +11,6 @@ export class CategoriesRepository implements ICategoriesRepository {
     this.categoryRepository = AppDataSource.getRepository(Category);
   }
 
-  // private static INSTANCE: CategoriesRepository;
-
-  // public static getInstance(): CategoriesRepository {
-  //   if (!CategoriesRepository.INSTANCE)
-  //     CategoriesRepository.INSTANCE = new CategoriesRepository();
-
-  //   return CategoriesRepository.INSTANCE;
-  // }
-
   async create({ name, description }: CreateCategoryDTO): Promise<void> {
     const category = this.categoryRepository.create({
       description,
