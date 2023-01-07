@@ -5,32 +5,32 @@ import { ICategoriesRepository } from '../ICategoriesRepository';
 import { AppDataSource } from './../../../../database/app-data-source';
 
 export class CategoriesRepository implements ICategoriesRepository {
-  private categoryRepository: Repository<Category>;
+  private categoriesRepository: Repository<Category>;
 
   constructor() {
-    this.categoryRepository = AppDataSource.getRepository(Category);
+    this.categoriesRepository = AppDataSource.getRepository(Category);
   }
 
   async create({ name, description }: CreateCategoryDTO): Promise<void> {
-    const category = this.categoryRepository.create({
+    const category = this.categoriesRepository.create({
       description,
       name,
     });
 
-    await this.categoryRepository.save(category);
-  }
-
-  async list(): Promise<Category[]> {
-    const categories = await this.categoryRepository.find();
-
-    return categories;
+    await this.categoriesRepository.save(category);
   }
 
   async findByName(name: string): Promise<Category> {
-    const getCategoryByName = await this.categoryRepository.findOne({
+    const getCategoryByName = await this.categoriesRepository.findOne({
       where: { name },
     });
 
     return getCategoryByName;
+  }
+
+  async list(): Promise<Category[]> {
+    const categories = await this.categoriesRepository.find();
+
+    return categories;
   }
 }

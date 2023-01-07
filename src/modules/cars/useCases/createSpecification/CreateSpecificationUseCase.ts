@@ -13,11 +13,11 @@ export class CreteSpecificationUseCase {
     private specificationRepository: ISpecificationRepository
   ) {}
 
-  execute({ name, description }: IRequest): void {
-    const checkAlreadyExists = this.specificationRepository.findByName(name);
+  async execute({ name, description }: IRequest): Promise<void> {
+    const checkAlreadyExists = await this.specificationRepository.findByName(name);
 
     if (checkAlreadyExists) throw new Error('Specification already exists!');
 
-    this.specificationRepository.create({ name, description });
+    await this.specificationRepository.create({ name, description });
   }
 }

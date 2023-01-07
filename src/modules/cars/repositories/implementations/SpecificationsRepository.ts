@@ -1,41 +1,36 @@
+import { Repository } from 'typeorm';
+import { AppDataSource } from '../../../../database/app-data-source';
 import { CreateSpecificationDTO } from '../../dto/create-specification-dto';
 import { Specification } from '../../entities/Specification';
 import { ISpecificationRepository } from '../ISpecificationsRepository';
 
 export class SpecificationRepository implements ISpecificationRepository {
+  private specificationsRepository: Repository<Specification>;
+
   constructor() {
-    this.specifications = [];
+    this.specificationsRepository = AppDataSource.getRepository(Specification);
   }
 
-  private specifications: Specification[];
-  private static INSTANCE: SpecificationRepository;
-
-  public static getInstance(): SpecificationRepository {
-    if (!SpecificationRepository.INSTANCE) {
-      SpecificationRepository.INSTANCE = new SpecificationRepository();
-    }
-    return SpecificationRepository.INSTANCE;
-  }
-
-  create({ name, description }: CreateSpecificationDTO): void {
-    const specification = new Specification();
-    Object.assign(specification, {
+  async create({ name, description }: CreateSpecificationDTO): Promise<void> {
+    const specification = this.specificationsRepository.create({
       name,
       description,
-      created_at: new Date(),
     });
 
-    this.specifications.push(specification);
+    await this.specificationsRepository.save(specification);
   }
 
-  findByName(name: string): Specification {
-    const checkSpecificationName = this.specifications.find(
-      (specifications) => specifications.name === name
-    );
-    return checkSpecificationName;
+  async findByName(name: string): Promise<Specification> {
+    const findSpecificationByName = await this.specificationsRepository.findOne({
+      where: { name },
+    });
+
+    return findSpecificationByName;
   }
 
-  list(): Specification[] {
-    return this.specifications;
+  async list(): Promise<Specification[]> {
+    const getAllSpecifications = await this.specificationsRepository.find();
+
+    return getAllSpecifications;
   }
 }
