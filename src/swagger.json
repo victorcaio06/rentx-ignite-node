@@ -53,21 +53,9 @@
         "requestBody": {
           "content": {
             "application/json": {
-              "schema": {
-                "type":"object",
-                "properties":{
-                  "name": {
-                    "type":"string"
-                  },
-                  "description": {
-                    "type": "string"
-                  }
-                },
-                "example": {
-                  "name": "Câmbio manual",
-                  "description": "O tipo do câmbio é manual"
-                }
-              }
+             "schema": {
+              "$ref": "#/definitions/Specification"
+             }
             }
           }
         },
@@ -79,6 +67,23 @@
             "description": "Specification already exists"
           }
         }
+      }
+    }
+  },
+  "definitions": {
+    "Specification": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      },
+      "example": {
+        "name": "Câmbio manual",
+        "description": "Câmbio de transmição manual"
       }
     }
   }
