@@ -40,7 +40,34 @@
             "description": "Created"
           },
           "500": {
-            "description": "Category already exists"
+            "description": "Category already exists!"
+          }
+        }
+      }
+    },
+    "/categories/import": {
+      "post": {
+        "tags": ["Category"],
+        "summary": "Upload a new category",
+        "description": "Upload categories by CSV files, new nonexisting categories are added",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
           }
         }
       }
@@ -64,7 +91,7 @@
             "description": "Created"
           },
           "500": {
-            "description": "Specification already exists"
+            "description": "Specification already exists!"
           }
         }
       }
