@@ -1,6 +1,4 @@
-import { Category } from '../entities/Category';
-
-export class CreateCategoryDTO extends Category {
+export class CreateCategoryDTO {
   name: string;
   description: string;
 }

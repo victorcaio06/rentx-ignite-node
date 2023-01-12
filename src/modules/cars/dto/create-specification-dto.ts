@@ -1,6 +1,4 @@
-import { Specification } from '../entities/Specification';
-
-export class CreateSpecificationDTO extends Specification {
+export class CreateSpecificationDTO {
   name: string;
   description: string;
 }
