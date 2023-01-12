@@ -1,6 +1,6 @@
 import { Repository } from 'typeorm';
 import { AppDataSource } from '../../../../database/app-data-source';
-import { CreateSpecificationDTO } from '../../dto/create-specification-dto';
+import { CreateSpecificationDTO } from '../../dtos/create-specification-dto';
 import { Specification } from '../../entities/Specification';
 import { ISpecificationRepository } from '../ISpecificationsRepository';
 

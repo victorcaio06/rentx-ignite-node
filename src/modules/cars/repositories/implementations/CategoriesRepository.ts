@@ -1,5 +1,5 @@
 import { Repository } from 'typeorm';
-import { CreateCategoryDTO } from '../../dto/create-category-dto';
+import { CreateCategoryDTO } from '../../dtos/create-category-dto';
 import { Category } from '../../entities/Category';
 import { ICategoriesRepository } from '../ICategoriesRepository';
 import { AppDataSource } from './../../../../database/app-data-source';

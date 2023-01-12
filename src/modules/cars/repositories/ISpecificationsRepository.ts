@@ -1,4 +1,4 @@
-import { CreateSpecificationDTO } from '../dto/create-specification-dto';
+import { CreateSpecificationDTO } from '../dtos/create-specification-dto';
 import { Specification } from '../entities/Specification';
 
 export interface ISpecificationRepository {

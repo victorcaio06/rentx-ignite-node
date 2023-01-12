@@ -1,5 +1,5 @@
 import { Category } from '../entities/Category';
-import { CreateCategoryDTO } from '../dto/create-category-dto';
+import { CreateCategoryDTO } from '../dtos/create-category-dto';
 
 export interface ICategoriesRepository {
   findByName(name: string): Promise<Category>;
