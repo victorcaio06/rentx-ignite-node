@@ -16,9 +16,6 @@ export class User {
   name: string;
 
   @Column()
-  username: string;
-
-  @Column()
   password: string;
 
   @Column()
@@ -27,7 +24,7 @@ export class User {
   @Column()
   driver_license: string;
 
-  @Column()
+  @Column('boolean', { default: false })
   isAdmin: boolean;
 
   @CreateDateColumn()
