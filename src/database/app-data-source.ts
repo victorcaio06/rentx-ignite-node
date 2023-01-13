@@ -1,4 +1,5 @@
 import { DataSource } from 'typeorm';
+import { User } from '../modules/accounts/entities/User';
 import { Category } from '../modules/cars/entities/Category';
 import { Specification } from '../modules/cars/entities/Specification';
 
@@ -10,6 +11,6 @@ export const AppDataSource = new DataSource({
   password: 'ignite',
   database: 'rentx',
   synchronize: true,
-  entities: [Category, Specification],
+  entities: [Category, Specification, User],
   migrations: ['./src/database/migrations/*.{ts,js}'],
 });
