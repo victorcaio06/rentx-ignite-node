@@ -1,6 +1,10 @@
 import * as bcrypt from 'bcrypt';
 import * as jsonwebtoken from 'jsonwebtoken';
 import { inject, injectable } from 'tsyringe';
+import { config } from 'dotenv';
+
+config();
+
 import { IUsersRepository } from '../../repositories/IUsersRepository';
 
 interface IRequest {
@@ -43,6 +47,12 @@ export class AuthenticationUserUseCase {
       { subject: user.id, expiresIn: '1d' }
     );
 
-    return { user, token };
+    return {
+      user: {
+        name: user.name,
+        email: user.email,
+      },
+      token,
+    };
   }
 }
