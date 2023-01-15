@@ -6,6 +6,7 @@ import { config } from 'dotenv';
 config();
 
 import { IUsersRepository } from '../../repositories/IUsersRepository';
+import { AppError } from '../../../../errors/AppError';
 
 interface IRequest {
   email: string;
@@ -33,13 +34,13 @@ export class AuthenticationUserUseCase {
     const user = await this.usersRepository.findByEmail(email);
 
     if (!user) {
-      throw new Error('Email or password incorrect!');
+      throw new AppError('Email or password incorrect!');
     }
 
     const passwordMatch = await bcrypt.compare(password, user.password);
 
     if (!passwordMatch) {
-      throw new Error('Email or password incorrect!');
+      throw new AppError('Email or password incorrect!');
     }
 
     const token = jsonwebtoken.sign(
