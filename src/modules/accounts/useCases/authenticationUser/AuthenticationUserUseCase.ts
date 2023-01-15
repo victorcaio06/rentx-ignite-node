@@ -24,6 +24,7 @@ interface IResponse {
 @injectable()
 export class AuthenticationUserUseCase {
   private secretKey = process.env.SECRET_KEY;
+
   constructor(
     @inject('UsersRepository') private usersRepository: IUsersRepository
   ) {}
