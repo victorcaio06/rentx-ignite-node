@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start:dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules --respawn src/server.ts ",
-    "test": "jest",
+    "test": "jest --runInBand --detectOpenHandles",
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli",
     "typeorm:create": "npx typeorm-ts-node-commonjs migration:create",
     "typeorm:run": "npx typeorm-ts-node-commonjs -d ./src/database/app-data-source.ts migration:run"
