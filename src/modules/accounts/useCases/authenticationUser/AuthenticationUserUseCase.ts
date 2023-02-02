@@ -5,8 +5,8 @@ import { config } from 'dotenv';
 
 config();
 
-import { IUsersRepository } from '../../repositories/IUsersRepository';
-import { AppError } from '../../../../errors/AppError';
+import { IUsersRepository } from '@modules/accounts/repositories/IUsersRepository';
+import { AppError } from '@errors/AppError';
 
 interface IRequest {
   email: string;
