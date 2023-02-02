@@ -2,8 +2,8 @@ import { config } from 'dotenv';
 import { NextFunction, Request, Response } from 'express';
 import * as jsonwebtoken from 'jsonwebtoken';
 
-import { AppError } from '../errors/AppError';
-import { UsersRepository } from '../modules/accounts/repositories/implementations/UsersRepository';
+import { AppError } from '@shared/errors/AppError';
+import { UsersRepository } from '@modules/accounts/infra/typeorm/repositories/UsersRepository';
 
 config();
 

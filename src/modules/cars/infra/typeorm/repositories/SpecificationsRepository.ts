@@ -1,8 +1,9 @@
 import { Repository } from 'typeorm';
-import { AppDataSource } from '../../../../database/app-data-source';
-import { CreateSpecificationDTO } from '../../dtos/create-specification-dto';
-import { Specification } from '../../entities/Specification';
-import { ISpecificationRepository } from '../ISpecificationsRepository';
+
+import { AppDataSource } from '@shared/infra/typeorm/app-data-source';
+import { CreateSpecificationDTO } from '@modules/cars/dtos/create-specification-dto';
+import { ISpecificationRepository } from '@modules/cars/repositories/ISpecificationsRepository';
+import { Specification } from '../entities/Specification';
 
 export class SpecificationRepository implements ISpecificationRepository {
   private specificationsRepository: Repository<Specification>;

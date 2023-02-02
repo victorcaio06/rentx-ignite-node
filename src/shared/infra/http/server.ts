@@ -1,11 +1,11 @@
-import 'reflect-metadata';
 import express, { NextFunction, Request, Response } from 'express';
 import 'express-async-errors';
+import 'reflect-metadata';
 import swaggerUi from 'swagger-ui-express';
 
-import { AppDataSource } from './database/app-data-source';
+import { AppDataSource } from '@shared/infra/typeorm/app-data-source';
+import swaggerFile from '../../../swagger.json';
 import { router } from './routes';
-import swaggerFile from './swagger.json';
 
 AppDataSource.initialize()
   .then(() => {
@@ -15,8 +15,8 @@ AppDataSource.initialize()
     console.error('Error during Data Source initialization:', err);
   });
 
-import './shared/container';
-import { AppError } from './errors/AppError';
+import '@shared/container';
+import { AppError } from '@shared/errors/AppError';
 
 const app = express();
 app.use(express.json());
