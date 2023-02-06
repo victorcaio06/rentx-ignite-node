@@ -1,21 +1,9 @@
-export class Car {
-  id: string;
-
+export class CreateCarDTO {
   name: string;
-
   description: string;
-
   daily_rate: number;
-
-  available: boolean;
-
   license_plate: string;
-
-  fine_amount: number;
-
+  find_amount: number;
   brand: string;
-
-  created_at?: Date;
-
   category_id: string;
 }
