@@ -10,7 +10,7 @@ export class User {
   }
 
   @PrimaryColumn()
-  id: string;
+  id?: string;
 
   @Column()
   name: string;
@@ -18,7 +18,7 @@ export class User {
   @Column()
   password: string;
 
-  @Column()
+  @Column({ unique: true })
   email: string;
 
   @Column()
@@ -31,5 +31,5 @@ export class User {
   isAdmin: boolean;
 
   @CreateDateColumn()
-  created_at: Date;
+  created_at?: Date;
 }
