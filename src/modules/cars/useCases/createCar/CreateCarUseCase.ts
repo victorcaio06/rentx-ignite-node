@@ -1,3 +1,4 @@
+import { Car } from '@modules/cars/infra/typeorm/entities/Car';
 import { ICarRepository } from '@modules/cars/repositories/ICarsRepository';
 import { AppError } from '@shared/errors/AppError';
 
@@ -28,7 +29,7 @@ export class CreateCarUseCase {
     find_amount,
     brand,
     category_id,
-  }: IRequest): Promise<void> {
+  }: IRequest): Promise<Car> {
     const carAlreadyExits = await this.carsRepository.findByLicensePlate(
       license_plate
     );
@@ -37,7 +38,7 @@ export class CreateCarUseCase {
       throw new AppError('Car with existing license plate!', 400);
     }
 
-    await this.carsRepository.create({
+    const car = await this.carsRepository.create({
       name,
       description,
       daily_rate,
@@ -46,5 +47,7 @@ export class CreateCarUseCase {
       brand,
       category_id,
     });
+
+    return car;
   }
 }
