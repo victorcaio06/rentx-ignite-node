@@ -10,7 +10,7 @@
 
 - [] RN02 O carro deve ser cadastrado, por padrão, com disponibilidade.
 
-- [] RN03 O usuário responsável pelo cadastro deve ser um usuário administrador.
+- * [] RN03 O usuário responsável pelo cadastro deve ser um usuário administrador.
 
 # Listagem de carros
 
