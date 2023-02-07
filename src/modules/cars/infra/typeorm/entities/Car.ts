@@ -2,11 +2,12 @@ import {
   Column,
   CreateDateColumn,
   Entity,
-  JoinTable,
-  ManyToMany,
+  JoinColumn,
+  ManyToOne,
   PrimaryColumn,
 } from 'typeorm';
 import { v4 as uuidv4 } from 'uuid';
+
 import { Category } from './Category';
 
 @Entity('cars')
@@ -38,13 +39,13 @@ export class Car {
   @CreateDateColumn()
   created_at?: Date;
 
-  @ManyToMany(() => Category, (category) => category.id, {
-    nullable: true,
-    onDelete: 'SET NULL',
-    onUpdate: 'SET NULL',
+  @ManyToOne(() => Category)
+  @JoinColumn({
+    referencedColumnName: 'id',
+    foreignKeyConstraintName: 'FKCategoryId_car',
+    name: 'category_id',
   })
-  @JoinTable()
-  category_id: Category[];
+  category: Category;
 
   constructor() {
     if (!this.id) {
