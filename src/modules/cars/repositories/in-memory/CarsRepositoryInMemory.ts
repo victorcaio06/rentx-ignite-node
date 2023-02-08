@@ -1,8 +1,8 @@
 import { CreateCarDTO } from '@modules/cars/dtos/create-car-dto';
 import { Car } from '@modules/cars/infra/typeorm/entities/Car';
-import { ICarRepository } from '../ICarsRepository';
+import { ICarsRepository } from '../ICarsRepository';
 
-export class CarsRepositoryInMemory implements ICarRepository {
+export class CarsRepositoryInMemory implements ICarsRepository {
   cars: Car[] = [];
 
   async create({
@@ -31,7 +31,7 @@ export class CarsRepositoryInMemory implements ICarRepository {
     return car;
   }
 
-  async findByLicensePlate(licensePlate: string): Promise<Car> {
-    return this.cars.find((car) => car.license_plate === licensePlate);
+  async findByLicensePlate(license_plate: string): Promise<Car> {
+    return this.cars.find((car) => car.license_plate === license_plate);
   }
 }
