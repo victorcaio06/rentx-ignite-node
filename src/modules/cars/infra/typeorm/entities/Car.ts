@@ -1,11 +1,4 @@
-import {
-  Column,
-  CreateDateColumn,
-  Entity,
-  JoinColumn,
-  ManyToOne,
-  PrimaryColumn,
-} from 'typeorm';
+import { Column, CreateDateColumn, Entity, ManyToOne, PrimaryColumn } from 'typeorm';
 import { v4 as uuidv4 } from 'uuid';
 
 import { Category } from './Category';
@@ -31,7 +24,7 @@ export class Car {
   license_plate: string;
 
   @Column()
-  fine_amount: number;
+  find_amount: number;
 
   @Column()
   brand: string;
@@ -39,12 +32,7 @@ export class Car {
   @CreateDateColumn()
   created_at?: Date;
 
-  @ManyToOne(() => Category)
-  @JoinColumn({
-    referencedColumnName: 'id',
-    foreignKeyConstraintName: 'FKCategoryId_car',
-    name: 'category_id',
-  })
+  @ManyToOne(() => Category, (category) => category.id)
   category: Category;
 
   constructor() {
